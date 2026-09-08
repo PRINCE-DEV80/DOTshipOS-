@@ -1,15 +1,17 @@
 #include <stdio.h>
-#include "reset.h"
 #include <string.h>
-void reset(){
-	
+#include "reset.h"
 
-registered = 0;
+void reset() {
+    registered = 0;
 
-memset(userName, 0, sizeof(userName));
-memset(password, 0, sizeof(password));
-memset(name, 0, sizeof(name));
-memset(pass, 0, sizeof(pass));
+    memset(userName, 0, sizeof(userName));
+    memset(password, 0, sizeof(password));
+    memset(name, 0, sizeof(name));
+    memset(pass, 0, sizeof(pass));
 
-printf("System Reset Successful!\n");
+    // user.dat ko remove karna taaki next time boot() chala sake
+    remove("user.dat");
+
+    printf("System Reset Successful!\n");
 }

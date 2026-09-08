@@ -29,7 +29,7 @@ int main() {
     
     registered = check_registration(); // Saved data check karne ke liye call kiya gaya
 if(!registered){
-	boot();
+        boot();
 }
     while (1) {
         printf("================MENU=================\n");
@@ -99,7 +99,49 @@ if(!registered){
                                     messageApp();
                                     break;
 
-                                case 7:
+                                case 7: {
+                                    // GST Checker + Calculator
+                                    char gstin[16];
+                                    char pan[11];
+                                    printf("Enter GSTIN no. = ");
+                                    scanf(" %15s", gstin);
+
+                                    float amount, rate;
+                                    printf("Amount: ");
+                                    scanf("%f", &amount);
+                                    printf("Rate (5/12/18/28): ");
+                                    scanf("%f", &rate);
+
+                                    float gst = (amount * rate) / 100;
+                                    float total = amount + gst;
+
+                                    printf("GST = %.2f\n", gst);
+                                    printf("Total = %.2f\n", total);
+
+                                    for(int i = 0; i < 10;i++){
+                                        pan[i] = gstin[i+2];
+                                    }
+                                    pan[10] = '\0';
+                                    int len = strlen(gstin);
+                                    printf("length = %d\n",len);
+                                    printf("State No. = %c%c\n",gstin[0],gstin[1]);
+                                    printf("PAN = %s\n",pan);
+                                    printf("Entity No. = %c\n",gstin[12]);
+                                    printf("Default No. = %c\n",gstin[13]);
+                                    printf("Checksum No. = %c\n",gstin[14]);
+                                    if(len == 15){
+                                        if(gstin[0] >= '0' && gstin[0] <= '9' && gstin[1] >= '0' && gstin[1] <= '9'){
+                                            printf("=====GSTIN is Valid!!=====\n");
+                                        }else{
+                                            printf("=====GSTIN is Invalid!!=====\n");
+                                        }
+                                    }else{
+                                        printf("=====GSTIN is Invalid!!=====\n");
+                                    }
+                                    break;
+                                }
+
+                                case 8:
                                     run = 0; // Logout / Back
                                     break;
 

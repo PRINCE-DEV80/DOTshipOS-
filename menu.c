@@ -11,7 +11,8 @@ void osMenu()
         printf("4. Reset\n");
         printf("5. Terminal\n");
         printf("6. Messages\n");
-        printf("7. Back\n");
+        printf("7. GstChecker\n");
+        printf("8. Back\n");
         printf("Enter Choice = ");
         scanf(" %d",&menuChoice);
 }
